@@ -23,6 +23,12 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+
+    - name: debug
+      run: echo "$GITHUB_CONTEXT"
+
+    - name: debug2
+      run: echo "$GITHUB_REF_NAME"
     
     - name: export game
       # Use latest version (see releases for all versions)
@@ -32,6 +38,6 @@ jobs:
         godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_linux_headless.64.zip
         godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz
         relative_project_path: ${{ env.GAME_PATH }}
-        base_version: ${GITHUB_REF_NAME}
+        base_version: "$GITHUB_REF_NAME"
       env:
         GITHUB_TOKEN: ${{ secrets.EXPORT_GITHUB_TOKEN }}
