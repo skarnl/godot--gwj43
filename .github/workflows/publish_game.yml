@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT_NAME: gwj2022--43
-  ITCH_GAME: gwj2022--43
+  ITCH_GAME: gwj43
   ITCH_USER: skar
 
 
@@ -37,4 +37,3 @@ jobs:
           ITCH_USER: ${{ env.ITCH_USER }}
           PACKAGE: ${{ env.PROJECT_NAME }}--${{ matrix.platform }}.zip
           VERSION: ${{ steps.tagName.outputs.tag }}
-
