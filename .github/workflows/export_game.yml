@@ -1,8 +1,8 @@
 
 on: 
   push:
-    branches:
-      - release
+    tags:
+      - '*'
 
 env:
   GODOT_VERSION: 3.4.3
@@ -21,7 +21,9 @@ jobs:
       # your project is available for Godot to export
     - name: checkout
       uses: actions/checkout@v2
-
+      with:
+        fetch-depth: 0
+    
     - name: export game
       # Use latest version (see releases for all versions)
       uses: firebelley/godot-export@v3.0.0
@@ -30,6 +32,6 @@ jobs:
         godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_linux_headless.64.zip
         godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz
         relative_project_path: ${{ env.GAME_PATH }}
-        base_version: 0.1.0
+        base_version: ${{ GITHUB_REF_NAME }}
       env:
         GITHUB_TOKEN: ${{ secrets.EXPORT_GITHUB_TOKEN }}
