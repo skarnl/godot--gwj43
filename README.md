@@ -3,5 +3,5 @@
 A repo for gwj2022--43
 
 ### How to deploy
-1. Merge the `main` into `release`
-2. Push and it will _automagically_ be published to itch.io ^^
+1. Create a tag with `tag -a x.y.z`
+2. Push it and the pipeline will _automagically_ run and publish to itch.io ^^
